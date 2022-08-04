@@ -1,4 +1,4 @@
-name: first
+name: second
 
 on: 
     push:
@@ -16,7 +16,7 @@ jobs:
           # for steps that run later in the job (e.g. job1)
           uses: actions/checkout@v2
         - name: Step two
-          run: env | sort
+          run: date +"%m-%d-%y"
       
     # Name of second job    
     job2:
@@ -26,8 +26,7 @@ jobs:
         - name: Step one
           uses: actions/checkout@v2
         - name: Step two
-          run: "Get-ChildItem Env: | Sort-Object Name"
-        needs: job1
+          run: Get-Date
 
     # Name of third job    
     job3:
@@ -37,5 +36,15 @@ jobs:
         - name: Step one
           uses: actions/checkout@v2
         - name: Step two
-          run: 
-        needs: ["job1", "job2"]
+          run: date
+
+    # Name of fourth job    
+    job3:
+        name: Fourth job
+        runs-on: macos-latest
+        steps: 
+        - name: Step one
+          uses: actions/checkout@v2
+        - name: Step two
+          run: date
+        needs: ["job1", "job2", "job3"]
