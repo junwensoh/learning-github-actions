@@ -1,18 +1,18 @@
 name: Create Artifact
 env: 
-    ARTIFACT_ENVIRONMENT_VARIABLE = 'This is an environment variable for an artifact.'
+    ARTIFACT_ENVIRONMENT_VARIABLE: 'This is an environment variable for an artifact.'
 on:
   push:
     branches:
       - "main"
 jobs:
-  create-artifact:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-      - name: Upload artifact for linux
-      - uses: actions/upload-artifact@v1.0.0
-        with:
-          name: ${{ env.ARTIFACT_ENVIRONMENT_VARIABLE }}
-          path: ./${{ env.ARTIFACT_ENVIRONMENT_VARIABLE }}
+    create-artifact:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Check out code
+          uses: actions/checkout@v2
+        - name: Upload artifact for linux
+        - uses: actions/upload-artifact@v1.0.0
+          with:
+              name: ${{ env.ARTIFACT_ENVIRONMENT_VARIABLE }}
+              path: ./${{ env.ARTIFACT_ENVIRONMENT_VARIABLE }}
