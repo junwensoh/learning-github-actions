@@ -9,10 +9,7 @@ jobs:
     create-artifact:
         runs-on: ubuntu-latest
         steps:
-            - name: Check out code
-              uses: actions/checkout@v2
-              
-            - name: Upload artifact for linux
+            - uses: actions/checkout@v2
             - uses: actions/upload-artifact@v1.0.0
               with:
                   name: ${{ env.ARTIFACT_ENVIRONMENT_VARIABLE }}
