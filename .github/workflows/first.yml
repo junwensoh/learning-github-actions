@@ -1,0 +1,30 @@
+name: first
+
+on: 
+    push:
+        branches: [ "main" ]
+
+jobs:
+    # Name of first job
+    job1:
+        name: First job
+        runs-on: ubuntu-latest
+        steps:
+        - name: Step one
+          # Adding an action. The 'uses' attribute execute an action in the OS.
+          # The checkout action checks out the code in all repositories, making all files available
+          # for steps that run later in the job (e.g. job1)
+          uses: actions/checkout@v2
+        - name: Step two
+          run: env | sort
+
+        
+    # Name of second job    
+    job2:
+        name: Second job
+        runs-on: windows-latest
+        steps: 
+        - name: Step one
+          uses: actions/checkout@v2
+        - name: Step two
+          run: "Get-ChildItem Env: | Sort-Object Name"
